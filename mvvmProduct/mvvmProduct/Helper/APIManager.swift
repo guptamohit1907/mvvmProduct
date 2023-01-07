@@ -12,7 +12,9 @@ enum DataErrror : Error {
     case network(Error?)
 }
 
-typealias Handler = (Result<[Product], DataErrror>) -> Void
+//typealias Handler = (Result<[Product], DataErrror>) -> Void
+typealias Handler<T> = (Result<T, DataErrror>) -> Void
+
 
 import UIKit
 // MARK :- Singleton Design Pattern
@@ -24,8 +26,14 @@ final class APIManager{
     private init(){
         
     }
-    func fetchProducts(completion : @escaping Handler){
-        guard let url = URL(string: Constant.API.productURL) else {
+    
+    func request<T: Decodable>(
+        modelType : T.Type,
+        type : EndPointType,
+        completion : @escaping Handler<T>
+    ){
+        guard let url = type.url else {
+            completion(.failure(.invalidURL))
             return
         }
         // background TasK
@@ -41,7 +49,7 @@ final class APIManager{
             }
             // JSONDEcoder() - Data ka model Array mai convert krega
             do {
-                let products = try JSONDecoder().decode([Product].self,from: data)
+                let products = try JSONDecoder().decode(modelType    ,from: data)
                 completion(.success(products))
             }
             catch{
@@ -50,6 +58,10 @@ final class APIManager{
         }.resume()
         print("Ended")
     }
+    
+//    func fetchProducts(completion : @escaping Handler){
+//    }
+    
 }
 //class A {
 //    func configuration(){

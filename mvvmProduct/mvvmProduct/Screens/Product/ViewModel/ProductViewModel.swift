@@ -13,7 +13,9 @@ final class ProductViewModel {
     
     func fetchProducts(){
         self.eventHandler?(.loading)
-        APIManager.shared.fetchProducts { response in
+        APIManager.shared.request(modelType: [Product].self
+         , type: EndPointItems.products
+         , completion: { response in
             self.eventHandler?(.stopLoading)
             switch response {
             case .success(let products) :
@@ -22,8 +24,24 @@ final class ProductViewModel {
             case .failure(let error) :
                 self.eventHandler?(.error(error))
             }
-        }
+        })
     }
+    
+//    func fetchProducts(){
+//        self.eventHandler?(.loading)
+//        APIManager.shared.fetchProducts { response in
+//            self.eventHandler?(.stopLoading)
+//            switch response {
+//            case .success(let products) :
+//                self.products = products
+//                self.eventHandler?(.dataLoaded)
+//            case .failure(let error) :
+//                self.eventHandler?(.error(error))
+//            }
+//        }
+//    }
+    
+    
 }
 extension ProductViewModel {
     enum Event {
