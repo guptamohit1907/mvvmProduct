@@ -5,6 +5,10 @@
 //  Created by Mohit Gupta on 04/01/23.
 //
 
+import Foundation
+import UIKit
+
+
 enum DataErrror : Error {
     case invalidResponse
     case invalidURL
@@ -16,18 +20,15 @@ enum DataErrror : Error {
 typealias Handler<T> = (Result<T, DataErrror>) -> Void
 
 
-import UIKit
 // MARK :- Singleton Design Pattern
 // if the class is final we cannot inherit it 
 final class APIManager{
     static let shared = APIManager()
     // class object is inaccesible outside the class
     // Error :- 'APIManager' initializer is inaccessible due to 'private' protection level
-    private init(){
-        
-    }
+    private init(){}
     
-    func request<T: Decodable>(
+    func request<T: Codable>(
         modelType : T.Type,
         type : EndPointType,
         completion : @escaping Handler<T>
@@ -36,8 +37,19 @@ final class APIManager{
             completion(.failure(.invalidURL))
             return
         }
+        
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = type.method.rawValue
+        
+        if let parameters = type.body {
+            request.httpBody = try? JSONEncoder().encode(parameters)
+        }
+        
+        request.allHTTPHeaderFields = type.headers
+        
         // background TasK
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data, error == nil else {
                 completion(.failure(.invalidData))
                 return
@@ -57,6 +69,12 @@ final class APIManager{
             }
         }.resume()
         print("Ended")
+    }
+    
+    static var commonHeaders : [String : String] {
+        return [
+            "Content-Type" : "application/json"
+        ]
     }
     
 //    func fetchProducts(completion : @escaping Handler){

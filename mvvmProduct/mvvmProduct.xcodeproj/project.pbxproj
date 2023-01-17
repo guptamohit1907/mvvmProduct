@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8639859429766ED70017B054 /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8639859329766ED70017B054 /* AddProductViewController.swift */; };
+		86398596297693CE0017B054 /* AddProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86398595297693CE0017B054 /* AddProduct.swift */; };
+		863985982976946B0017B054 /* ProductEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863985972976946B0017B054 /* ProductEndPoint.swift */; };
 		869763D32965F0470025C2C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869763D22965F0470025C2C4 /* AppDelegate.swift */; };
 		869763D52965F0470025C2C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869763D42965F0470025C2C4 /* SceneDelegate.swift */; };
 		869763DA2965F0470025C2C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 869763D82965F0470025C2C4 /* Main.storyboard */; };
@@ -25,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8639859329766ED70017B054 /* AddProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewController.swift; sourceTree = "<group>"; };
+		86398595297693CE0017B054 /* AddProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProduct.swift; sourceTree = "<group>"; };
+		863985972976946B0017B054 /* ProductEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEndPoint.swift; sourceTree = "<group>"; };
 		869763CF2965F0470025C2C4 /* mvvmProduct.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mvvmProduct.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		869763D22965F0470025C2C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		869763D42965F0470025C2C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +61,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8639859229766EAB0017B054 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				869763F7296622C40025C2C4 /* ProductListViewController.swift */,
+				8639859329766ED70017B054 /* AddProductViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		869763C62965F0470025C2C4 = {
 			isa = PBXGroup;
 			children = (
@@ -156,7 +171,6 @@
 		869763EE2965F3680025C2C4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				869763F7296622C40025C2C4 /* ProductListViewController.swift */,
 				86D7923D2966CA6600FF0AE6 /* ProductCell.swift */,
 				86D7923E2966CA6600FF0AE6 /* ProductCell.xib */,
 			);
@@ -167,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				869763F02965FB830025C2C4 /* Product.swift */,
+				86398595297693CE0017B054 /* AddProduct.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,6 +189,7 @@
 		869763F6296622A10025C2C4 /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				8639859229766EAB0017B054 /* Controller */,
 				869763EF2965F36F0025C2C4 /* Model */,
 				869763EE2965F3680025C2C4 /* View */,
 				869763ED2965F3280025C2C4 /* ViewModel */,
@@ -185,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				86BDE1DE29697738007258FC /* EndPointType.swift */,
+				863985972976946B0017B054 /* ProductEndPoint.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -267,10 +284,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8639859429766ED70017B054 /* AddProductViewController.swift in Sources */,
 				869763FA296624ED0025C2C4 /* ProductViewModel.swift in Sources */,
+				863985982976946B0017B054 /* ProductEndPoint.swift in Sources */,
 				869763F8296622C40025C2C4 /* ProductListViewController.swift in Sources */,
 				869763F32965FC420025C2C4 /* APIManager.swift in Sources */,
 				86D7924529673F8000FF0AE6 /* UIImageView+Extension.swift in Sources */,
+				86398596297693CE0017B054 /* AddProduct.swift in Sources */,
 				869763D32965F0470025C2C4 /* AppDelegate.swift in Sources */,
 				869763F529660D620025C2C4 /* Constant.swift in Sources */,
 				86D7923F2966CA6600FF0AE6 /* ProductCell.swift in Sources */,

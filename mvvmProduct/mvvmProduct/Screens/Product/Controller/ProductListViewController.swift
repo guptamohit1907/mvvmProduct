@@ -12,6 +12,11 @@ class ProductListViewController: UIViewController {
     @IBOutlet weak var productTableView : UITableView!
     private var viewModel = ProductViewModel()
 
+    @IBAction func addProductButtonTapped(_ sender: UIBarButtonItem) {
+        let product = AddProduct(title: "iPhone")
+        viewModel.addProduct(parameters: product)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configuration()
@@ -45,6 +50,8 @@ extension ProductListViewController {
                 print(self.viewModel.products)
             case .error(let error) :
                 print(error)
+            case .newProductAdded(let newProduct) :
+                print(newProduct)
             }
         }
     }
